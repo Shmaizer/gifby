@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-button{
-    
+.myBtn{
     font-family: Montserrat;
     font-weight: 800;
     border: 0;
@@ -9,6 +8,6 @@ button{
     padding: 10px 35px;
     cursor: pointer;
 }
-button:hover{
+.myBtn:hover{
     color:gray;
 }
