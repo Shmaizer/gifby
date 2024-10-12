@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.cardElementGif {
+    display: flex;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    align-items: center;
+    background-color: black;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+    &:hover &__title {
+        opacity: 1;
+        background-color: black;
+    }
+    &__title{
+        position: absolute;
+        bottom: 0;
+        font-family: Montserrat;
+        font-weight: 800;
+        color: white;
+        width: 100%;
+        padding: 5px 0px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    &__url{
+        position: absolute;
+        inset: 0;
+    }
+}

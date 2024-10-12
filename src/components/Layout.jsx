@@ -7,7 +7,6 @@ export const Layout = ({children,setSearchQuery,fetchGifs}) => {
   return (
     <React.Fragment>
         <Header/>
-        <Navbar setSearchQuery={setSearchQuery} fetchGifs={fetchGifs}/>
         <main className='cont_page_wrapper'>
             {children}
         </main>
