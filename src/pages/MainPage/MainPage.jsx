@@ -2,9 +2,12 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import IteractiveMenu from '../../components/IteractiveMenu/IteractiveMenu'
 import CardList from '../../components/UI/CardList/CardList';
+import Button from '../../components/UI/Button/Button';
+import Loading from '../../components/UI/Loading/Loading';
 const MainPage = () => {
   const API_GIFHY = 'VH8QIUKBDQ2mBH4vesWnkKKSQ7vrEfbb'
   const [offset, setOffset] = useState(0)
+  const [totalCount,setTotalCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [isLoading,setIsLoading] = useState(false)
   const [data,setData] = useState([])
@@ -15,16 +18,16 @@ const MainPage = () => {
         params: {
           api_key: API_GIFHY,
           q: searchQuery,
-          limit: 24,
+          limit: 16,
           offset: offset,
           rating: 'G',
           lang: 'en'
         }
       });
-      const totalCount = response.data.pagination.total_count; // Общее количество гифок
-      console.log(`Total GIFs available: ${totalCount-offset}`);
+      console.log(data.length+" - " +totalCount)
+      setTotalCount(response.data.pagination.total_count)
       setData((pData)=>[...pData,...response.data.data])
-      setOffset(pOffset=>pOffset+24)
+      setOffset(pOffset=>pOffset+16)
       console.log(response.data.data)
     } catch (error) {
       console.error('Error fetching GIFs:', error)
@@ -34,17 +37,20 @@ const MainPage = () => {
   }
   useEffect(() => {
     if (searchQuery) {
-      setOffset(0); // Сбрасываем offset при новом запросе
-      setData([]); // Сбрасываем предыдущие данные при новом запросе
-      fetchGifs();
+      setOffset(0)
+      setData([])
+      fetchGifs()
     }
   }, [searchQuery]);
   
   return (
     <div>
       <IteractiveMenu setSearchQuery={setSearchQuery}/>
-      <CardList data={data} isLoading={isLoading}></CardList>
-      <div style={{height:20,background: 'red',width:'100%'}}><button onClick={fetchGifs}></button></div>
+      <CardList data={data} isLoading={isLoading} fetchGifs={fetchGifs} totalCount={totalCount}></CardList>
+      {isLoading?
+      (<Loading/>):
+      data.length < totalCount&&(<Button style={{ margin: '15px auto', display: 'flex' }} onClick={fetchGifs}>MORE</Button>)
+      }
     </div>
   )
 }
