@@ -67,16 +67,17 @@
 }
 .btn-one:hover {
     color: black;
-    background-color: #dbdbdb;
     box-shadow: 2px 3px 0 white;
 }
 .btn-two:hover {
     color: black;
-    background-color: #dbdbdb;
     box-shadow: 0px 3px 0 white;
 }
 .btn-three:hover {
     color: black;
-    background-color: #dbdbdb;
     box-shadow: -2px 3px 0 white;
+}
+
+.active{
+    border: orange 2px solid;
 }

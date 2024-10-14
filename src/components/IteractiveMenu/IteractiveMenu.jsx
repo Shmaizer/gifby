@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './IteractiveMenu.scss'
 import inpLogo from '../../assets/svg/icons8-search-256.svg'
 import Button from '../../components/UI/Button/Button'
-const IteractiveMenu = ({setSearchQuery}) => {
+const IteractiveMenu = ({setSearchQuery,activeBtn,setActiveBtn}) => {
     const [query,setQuery] = useState('')
     const handleSearchChange = (event) => {
-    setQuery(event.target.value);
-    };
+      setQuery(event.target.value);
+    }
     const handleSearchSubmit = () =>{
-    setSearchQuery(query)
-  }
+      setSearchQuery(query)
+    }
+    const handleSetActiveBtn = (button)=>{
+      setActiveBtn(button)
+    }
+    
   return (
     <div className='inter'>
         <div className='inter_inputCont'>
@@ -28,9 +32,14 @@ const IteractiveMenu = ({setSearchQuery}) => {
         </button>
       </div>
       <div className='inter_butCont'>
-        <Button className='btn-one'>GIFs</Button>
-        <Button className='btn-two'>Stickers</Button>
-        <Button className='btn-three'>Clips</Button>
+        <Button 
+        className={`btn-one ${activeBtn==='gifs'? 'active' : ''}`}
+        onClick={()=>handleSetActiveBtn('gifs')}
+        >GIFs</Button>
+        <Button 
+        className={`btn-three ${activeBtn==='sticker'? 'active' : ''}`}
+        onClick={()=>handleSetActiveBtn('sticker')}
+        >Stickers</Button>
       </div>
     </div>
   )
