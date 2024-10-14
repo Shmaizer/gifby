@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gifby/static/css/main.8ede1ce1.css",
+    "main.js": "/gifby/static/js/main.3ab1729c.js",
+    "static/media/logo.svg": "/gifby/static/media/logo.8ce17601c90dfaff1be8868387f48496.svg",
+    "index.html": "/gifby/index.html",
+    "static/media/icons8-search-256.svg": "/gifby/static/media/icons8-search-256.8494c8478e3753dbceabca62f9c4bcea.svg",
+    "main.8ede1ce1.css.map": "/gifby/static/css/main.8ede1ce1.css.map",
+    "main.3ab1729c.js.map": "/gifby/static/js/main.3ab1729c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ede1ce1.css",
+    "static/js/main.3ab1729c.js"
+  ]
+}
